@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+void removeElement(int arr[], int *size, int element) {
+    int i, j;
+    for (i = 0; i < *size; i++) {
+        if (arr[i] == element) {
+            for (j = i; j < *size - 1; j++) {
+                arr[j] = arr[j + 1];
+            }
+            (*size)--;
+            i--;
+        }
+    }
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+int main() {
+    int n, elementToRemove;
+    scanf("%d", &n);
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    scanf("%d", &elementToRemove);
+    
+    removeElement(arr, &n, elementToRemove);
+
+    printArray(arr, n);
+
+    return 0;
+}
